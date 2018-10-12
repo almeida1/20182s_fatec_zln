@@ -14,9 +14,7 @@ public class UC01CadastrarLivro {
 			// cenario
 			Livro umLivro = new Livro();
 			// acao
-			umLivro.setIsbn("121212");
-			umLivro.setTitulo("Engenharia de Softwar");
-			umLivro.setAutor("Pressman");
+			umLivro = ObtemLivro.comDadosValidos();
 		} catch (RuntimeException e) {
 			// verificacao
 			fail("nao deve falhar");
