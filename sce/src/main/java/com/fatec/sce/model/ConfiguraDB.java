@@ -1,5 +1,9 @@
 package com.fatec.sce.model;
-
+/**
+ * 
+ * @author edson
+ *
+ */
 public class ConfiguraDB {
 	String url = "";
 	String driver = "";
