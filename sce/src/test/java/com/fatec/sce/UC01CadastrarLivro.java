@@ -4,7 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.fatec.sce.model.DAOFactory;
+import com.fatec.sce.model.ILivroDAO;
 import com.fatec.sce.model.Livro;
+
 /**
  * 
  * @author edson
@@ -66,9 +69,18 @@ public class UC01CadastrarLivro {
 		livro.setIsbn("1111");
 		assertEquals("Engenharia de Software", livro.getTitulo());
 	}
-	
-	
-	
-	
-	
+
+	@Test
+	public void CT03CadastrarLivro_com_sucesso() {
+		// cenario
+		Livro umLivro = ObtemLivro.comDadosValidos();
+		DAOFactory mySQLFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ILivroDAO livroDAO = mySQLFactory.getLivroDAO();
+		// acao
+		int codigoRetorno = livroDAO.adiciona(umLivro);
+		// verificacao
+		assertEquals(1, codigoRetorno);
+		livroDAO.exclui(umLivro.getIsbn());
+	}
+
 }
